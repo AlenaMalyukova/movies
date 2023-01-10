@@ -1,25 +1,32 @@
 <template>
-  <BContainer>
-    <h3 class="list-title">IMDB Top 250</h3>
-    <BRow>
+  <b-container>
+    <h1 class="list-title">IMDB Top 250</h1>
+    <b-row>
       <template v-if="isExist">
-      <BCol cols="3" v-for="(movie, key) in list" :key="key">
-      </BCol>
+      <b-col cols="3" v-for="(movie, key) in list" :key="key">
+        <MovieItem :movie="movie"/>
+      </b-col>
     </template>
-    </BRow>
-  </BContainer>
+    <template v-else>
+      <div>Empty List</div>
+    </template>
+    </b-row>
+  </b-container>
 </template>
 
 <script>
-import { BContainer } from 'bootstrap-vue';
+import MovieItem  from './MovieItem'
 
 export default {
   name: "MoviesList",
+  components: {
+    MovieItem
+  },
   props: {
-      list: {
-          type: Array,
-          default: () => { }
-      }
+    list: {
+      type: Object,
+      default: () => ({ })
+    }
   },
   computed: {
     isExist() {
