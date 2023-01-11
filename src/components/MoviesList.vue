@@ -44,5 +44,6 @@ export default {
 <style scoped>
 .list-title {
   color: #fff;
+  padding: 15px;
 }
 </style>

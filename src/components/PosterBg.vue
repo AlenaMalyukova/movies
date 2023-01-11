@@ -1,6 +1,5 @@
 <template>
   <div class="poster-page-bg" :style="posterStyle">
-
   </div>
 </template>
 
