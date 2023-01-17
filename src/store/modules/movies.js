@@ -43,12 +43,6 @@ const moviesStore = {
     }
   },
   actions: {
-    initMoviesStore: {
-      handler({ dispatch }) {
-        dispatch('fetchMovies')
-      },
-      root: true,
-    },
     async fetchMovies({getters, commit, dispatch}) {
       try{
         dispatch('toggleLoader', true, { root: true })
@@ -84,14 +78,21 @@ const moviesStore = {
         dispatch('toggleLoader', true, { root: true })
 
         const response = await axios.get(`/?s=${ query }`)
-        if(response.Err) {
+        if(response.Error) {
           throw Error(response.Error)
         }
 
         const movies = serializeResponse(response.Search)
         commit(MOVIES, movies)
       } catch (err) {
-        console.log(err.message)
+        dispatch('showNotify', 
+          { 
+            msg: err.message, 
+            title: 'Error', 
+            variant: 'danger'
+          }, 
+          { root: true }
+        )
       } finally {
         dispatch('toggleLoader', false, { root: true })
       }

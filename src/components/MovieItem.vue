@@ -8,7 +8,13 @@
       </div>
       <div class="movie-item-controls row no-gutters">
         <div class="col" pr-2>
-          <b-button size="md" block variant="outline-light">Edit</b-button>
+          <b-button 
+            size="md" 
+            block 
+            variant="outline-light" 
+            @click="showInfoModalEvent"
+            >Info
+          </b-button>
         </div>
         <div class="col" pl-2>
           <b-button 
@@ -24,6 +30,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'MovieItem',
   props: {
@@ -42,6 +49,9 @@ export default {
   methods:{
     removeEvent() {
       this.$emit('removeItem', {id: this.movie.imdbID, title: this.movie.Title})
+    },
+    showInfoModalEvent() {
+      this.$emit('showModal', this.movie.imdbID)
     }
   }
 }
@@ -101,6 +111,10 @@ export default {
 
 .movie-item-controls {
   display: flex;
+}
+
+.no-gutters > .col {
+  padding: 0 5px;
 }
 
 button {

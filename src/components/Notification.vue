@@ -1,5 +1,5 @@
 <template>
-  <div></div>
+  <div class="notify-wrap"></div>
 </template>
 
 <script>
@@ -14,13 +14,20 @@ export default {
     messagePool: 'showNotification'
   },
   methods: {
-    showNotification({ variant, msg, title }) {
-      this.$bvToast.toast( msg, {
+    showNotification({ msg, variant, title }) {
+      this.$bvToast.toast(msg, {
         title,
         variant,
-        solid: true
+        solid: false,
+        autoHideDelay:'2000',
       })
     }
   }
 }
 </script>
+
+<style scoped>
+::v-deep .toast {
+  margin-top: 50px !important;
+}
+</style>

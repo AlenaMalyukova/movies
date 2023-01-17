@@ -30,7 +30,7 @@ export default {
     MoviesPagination,
     Loader,
     Header,
-    Notification
+    Notification,
   },
   data: () => ({
     posterBg: ''
@@ -67,5 +67,8 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>
